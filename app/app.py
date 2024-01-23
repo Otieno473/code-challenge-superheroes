@@ -4,6 +4,7 @@ from flask import Flask, jsonify, make_response, request
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
 from flask_marshmallow import Marshmallow
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
 from models import db, Hero, Power, HeroPower
 
@@ -18,7 +19,7 @@ db.init_app(app) # connects our database to our application before it runs
 
 ma = Marshmallow(app) # instantiating Marshmallow with the flask application instance
 
-class PowerSchema(ma.SQLAlchemyAutoSchema):
+class PowerSchema(SQLAlchemyAutoSchema):
 
     class Meta:
         model = Power
@@ -28,7 +29,7 @@ class PowerSchema(ma.SQLAlchemyAutoSchema):
 power_schema = PowerSchema()
 powers_schema = PowerSchema(many=True)
 
-class HeroSchema(ma.SQLAlchemyAutoSchema):
+class HeroSchema(SQLAlchemyAutoSchema):
     
     powers = ma.Nested(PowerSchema, many=True)
 
