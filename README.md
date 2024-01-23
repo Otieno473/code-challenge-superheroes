@@ -1,5 +1,10 @@
 # Flask Code Challenge - Superheroes
 
+# Author: David Oyugi
+
+# LICENCE: 
+All rights reserved @ Jan 2023
+
 For this assessment, you'll be working on an API for tracking heroes and their
 superpowers.
 
